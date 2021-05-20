@@ -1,5 +1,5 @@
 # general-tree
-[![Run on Repl.it](https://repl.it/badge/github/TyHil/general-tree)](https://repl.it/github/TyHil/linked-list)
+[![Run on Repl.it](https://repl.it/badge/github/TyHil/general-tree)](https://repl.it/github/TyHil/general-tree)
 ## Description
 A general tree C++ library  
 Using my [linked-list](https://github.com/TyHil/linked-list) library  
