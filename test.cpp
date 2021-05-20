@@ -29,7 +29,7 @@ void printTree(linkedList<treeNode<testData>> * loopList, int tabs) {
 /*Main Test Code*/
 
 int main() {
-  tree<testData> * testTree = new tree<testData>();
+  generalTree<testData> * testTree = new generalTree<testData>();
   int cardData[10] = {1, 5, 8, 7, 1, 10, 13, 2, 9, 4};
   int suitData[10] = {3, 1, 3, 2, 0, 0, 1, 2, 0, 3};
   for (uint8_t i = 0; i < 10; i++) {

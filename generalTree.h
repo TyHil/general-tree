@@ -14,11 +14,11 @@ template <typename T> treeNode<T>::~treeNode() { //Destructor
 
 /*Tree*/
 
-template <typename T> class tree {
+template <typename T> class generalTree {
   public:
     linkedList<treeNode<T>> * root;
-    tree();
-    ~tree();
+    generalTree();
+    ~generalTree();
     void clear(linkedList<treeNode<T>> ** from);
     void add(int dir[], int depth, T * newData);
     treeNode<T> * get(int dir[], int depth);
@@ -29,20 +29,20 @@ template <typename T> class tree {
     void swap(int dir1[], int depth1, int dir2[], int depth2);
 };
 
-template <typename T> tree<T>::tree() { //Constructor
+template <typename T> generalTree<T>::generalTree() { //Constructor
   root = nullptr;
 }
 
-template <typename T> tree<T>::~tree() { //Destructor
+template <typename T> generalTree<T>::~generalTree() { //Destructor
   clear(&root);
 }
 
-template <typename T> void tree<T>::clear(linkedList<treeNode<T>> ** from) { //Clears and deletes all nodes and data inside the given list
+template <typename T> void generalTree<T>::clear(linkedList<treeNode<T>> ** from) { //Clears and deletes all nodes and data inside the given list
   delete *from;
   *from = nullptr;
 }
 
-template <typename T> void tree<T>::add(int dir[], int depth, T * newData) { //Adds a new node with specified data to the end of the linked list found by the specified direction
+template <typename T> void generalTree<T>::add(int dir[], int depth, T * newData) { //Adds a new node with specified data to the end of the linked list found by the specified direction
   linkedList<treeNode<T>> ** i = &root;
   if (*i == nullptr) {
     *i = new linkedList<treeNode<T>>();
@@ -58,7 +58,7 @@ template <typename T> void tree<T>::add(int dir[], int depth, T * newData) { //A
   (*i)->add(newNode);
 }
 
-template <typename T> treeNode<T> * tree<T>::get(int dir[], int depth) { //Returns a pointer to the node at the specified direction
+template <typename T> treeNode<T> * generalTree<T>::get(int dir[], int depth) { //Returns a pointer to the node at the specified direction
   linkedList<treeNode<T>> * temp = root;
   for (int i = 0; i < depth - 1; i++) {
     temp = temp->get(dir[i])->dataPtr->nodes;
@@ -66,13 +66,13 @@ template <typename T> treeNode<T> * tree<T>::get(int dir[], int depth) { //Retur
   return temp->get(dir[depth - 1])->dataPtr;
 }
 
-template <typename T> void tree<T>::set(int dir[], int depth, T * newData) { //Replaces the data of node at the specified direction with new data
+template <typename T> void generalTree<T>::set(int dir[], int depth, T * newData) { //Replaces the data of node at the specified direction with new data
   treeNode<T> * i = get(dir, depth);
   delete i->dataPtr;
   i->dataPtr = newData;
 }
 
-template <typename T> void tree<T>::insert(int dir[], int depth, T * newData) { //Inserts a new node and new data in the linked list specified by the direction and before the last index
+template <typename T> void generalTree<T>::insert(int dir[], int depth, T * newData) { //Inserts a new node and new data in the linked list specified by the direction and before the last index
   linkedList<treeNode<T>> ** i = &root;
   if (*i == nullptr) {
     *i = new linkedList<treeNode<T>>();
@@ -88,7 +88,7 @@ template <typename T> void tree<T>::insert(int dir[], int depth, T * newData) { 
   (*i)->insert(dir[depth - 1], newNode);
 }
 
-template <typename T> void tree<T>::remove(int dir[], int depth) { //Removes the node and data at the specified direction
+template <typename T> void generalTree<T>::remove(int dir[], int depth) { //Removes the node and data at the specified direction
   linkedList<treeNode<T>> * temp = root;
   for (int i = 0; i < depth - 1; i++) {
     temp = temp->get(dir[i])->dataPtr->nodes;
@@ -96,11 +96,11 @@ template <typename T> void tree<T>::remove(int dir[], int depth) { //Removes the
   temp->remove(dir[depth - 1]);
 }
 
-template <typename T> bool tree<T>::isEmpty() { //Returns true if the tree has no elements in it
+template <typename T> bool generalTree<T>::isEmpty() { //Returns true if the generalTree has no elements in it
   return root == nullptr;
 }
 
-template <typename T> void tree<T>::swap(int dir1[], int depth1, int dir2[], int depth2) { //Switches the data pointers of the nodes at the specified directions
+template <typename T> void generalTree<T>::swap(int dir1[], int depth1, int dir2[], int depth2) { //Switches the data pointers of the nodes at the specified directions
   treeNode<T> * i = get(dir1, depth1);
   treeNode<T> * j = get(dir2, depth2);
   T * temp = i->dataPtr;
