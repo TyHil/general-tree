@@ -47,10 +47,6 @@ int main() {
   cout << "Inital data added:\n";
   printTree(testTree->root, 1);
 
-  /*linkedList<testData> * newSubList = testTree->subList(1, 5);
-  cout << "New sub list created from 1 length 5:\n";
-  printTree(newSubList);*/
-
   testData * testSet = new testData();
   testSet->card = 56;
   testSet->suit = 5;
@@ -69,7 +65,7 @@ int main() {
 
   int dirRemove[1] = {4};
   testTree->remove(dirRemove, sizeof(dirRemove)/sizeof(dirRemove[0]));
-  cout << "After remove 4:\n";
+  cout << "After remove [4]:\n";
   printTree(testTree->root, 1);
 
   int dirSwap1[2] = {1, 1};
